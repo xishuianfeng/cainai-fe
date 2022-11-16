@@ -8,7 +8,7 @@ export const App = defineComponent({
       <header>
         <ul>
           <li>
-            <router-link to="/">Foo</router-link>
+            <router-link to="/welcome/1">Foo</router-link>
           </li>
           <li>
             <router-link to="/Bar">Bar</router-link>
