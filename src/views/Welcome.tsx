@@ -7,10 +7,10 @@ export const Welcome = defineComponent({
     return ()=> (
       <div class={s.wrapper}>
         <header>
-          logo
-          <h1>山竹记账</h1>
+          <img src="src/assets/icons/cainai.png"/>
+          <h1>彩乃记账</h1>
         </header>
-        <div><RouterView/></div>
+        <main><RouterView/></main>
         <footer></footer>
       </div>
     )
