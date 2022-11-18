@@ -3,6 +3,7 @@ import { Welcome } from '../views/Welcome'
 import { Second } from '../components/welcome/Second'
 import { Third } from '../components/welcome/Third'
 import { Forth } from '../components/welcome/Forth'
+import { StartPage } from '../views/StartPage'
 
 export const routes=[
   {path:'/',component:Welcome},
@@ -16,4 +17,5 @@ export const routes=[
       { path:'4', component:Forth,},
     ]
   },
+  {path:'/start',component:StartPage}
 ]
