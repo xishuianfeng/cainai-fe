@@ -4,7 +4,7 @@ export const FloatButton = defineComponent({
   setup:(props,context) => {
     return ()=> (
       <div>
-        <Icon icon='add'/>
+        <Icon icon={'add'}/>
       </div>
     )
   }

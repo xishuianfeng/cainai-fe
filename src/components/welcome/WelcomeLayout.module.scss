@@ -17,6 +17,13 @@
     >h2{
       margin-top: 40px;
     }
+    >div{
+      >img{
+        border: 1px solid red;
+        height: 128px;
+        width: 128px;
+      }
+    }
   }
   >.actions{
     z-index: var(--z-index-bottom-nav);
@@ -34,8 +41,4 @@
     padding-bottom: var(--welcome-bottom-gap);
     >.fake{ visibility: hidden; }
   }
- 
-}
-.pig{
-  width: 128px;
 }

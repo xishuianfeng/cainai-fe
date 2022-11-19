@@ -3,11 +3,12 @@ import s from './WelcomeLayout.module.scss';
 import pig from '../../assets/icons/pig.svg'
 import { RouterLink } from 'vue-router';
 import { WelcomeLayout } from './WelcomeLayout';
+import Icon from '../../shared/Icon.vue'
 
 export const First = defineComponent({
   setup:(props,context) => {
     const slots = {
-      icon:()=> <img src={pig}/>,
+      icon:()=> <Icon icon='pig' class='svg'/>,
       title:()=> <h2>要挣钱，<br/>还要会省钱</h2>,
       buttons:()=><>
           <RouterLink class={s.fake} to={"/welcome/start"}>跳过</RouterLink>
