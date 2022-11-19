@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="icon" :class=class :src=iconURL />
+    <img class="icon" :src=iconURL />
   </div>
 </template>
 
@@ -8,9 +8,6 @@
   export default {
     name:'icon',
     props:{
-      class:{
-        type:String
-      },
       icon:{
         type:String
       }
