@@ -22,6 +22,7 @@
     mounted() {
       const svgs = import.meta.glob('../assets/icons/*.svg')
       const getURL = svgs[`../assets/icons/${this.icon}.svg`]
+      
       getURL().then((url) => {
         //@ts-ignore
         this.iconURL = url.default

@@ -4,3 +4,24 @@
     padding: 16px;
   }
 }
+.pig{
+  > img {
+    width: 128px;
+    height: 128px;
+  }
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  &_wrapper{
+    padding: 120px 0;
+  }
+}
+
+.navIcon{
+  > img{
+    width: 28px;
+    height: 28px;      
+    position: relative;
+    top: 3px;
+  }
+}
