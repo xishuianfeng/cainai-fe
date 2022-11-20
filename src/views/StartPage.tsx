@@ -4,13 +4,12 @@ import { FloatButton } from '../shared/FloatButton';
 import Icon from '../shared/Icon.vue'
 import { Navbar } from '../shared/Narbar';
 import { Ovaerlay } from '../shared/Overlay';
+import { RouterLink } from 'vue-router';
 import s from './StartPage.module.scss'
+
+
 export const StartPage = defineComponent({
   setup:(props,context) => {
-    const onClick=()=>{
-      console.log(1);
-    }
-
     const refOverlayVisible = ref(false)
     const onClickMenu = () => {
       refOverlayVisible.value = !refOverlayVisible.value      
@@ -26,9 +25,13 @@ export const StartPage = defineComponent({
           <Icon icon='pig' class={s.pig}/>
         </div>
         <div class={s.button_wrapper}>
-          <Button class={s.button} onClick={onClick}>开始记账</Button>
+          <RouterLink to="/items/create">
+            <Button class={s.button} >开始记账</Button>
+          </RouterLink>
         </div>
-        <FloatButton iconName='add'/>
+        <RouterLink to="/items/create">
+          <FloatButton iconName='add' class={s.floatbutton}/>
+        </RouterLink>
         {refOverlayVisible.value && <Ovaerlay onClose={()=>refOverlayVisible.value = false}/>}
       </div>
     )

@@ -16,7 +16,11 @@
     padding: 120px 0;
   }
 }
-
+.floatbutton{
+  position:absolute;
+  right: 24px;
+  bottom: 24px;
+}
 .navIcon{
   > img{
     width: 28px;
