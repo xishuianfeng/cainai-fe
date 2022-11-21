@@ -4,6 +4,9 @@ export const Tabs = defineComponent({
   props:{
     selected:{
       type:String,
+    },
+    onUpdateSelected:{
+      type:Function,
     }
   },
   setup:(props,context) => {
@@ -18,7 +21,12 @@ export const Tabs = defineComponent({
       return( 
           <div class={s.tabs}>
             <ol class={s.tabs_nav}>
-              {array.map(item=><li class={item.props?.name === props.selected ? 's.selected':''}>{item.props?.name}</li>)}
+              {array.map(item=>
+              <li class={item.props?.name === props.selected ? s.selected:''}
+                  onClick={()=>props.onUpdateSelected?.(item.props?.name)}
+              >
+                {item.props?.name}
+              </li>)}
             </ol>
           <div></div>
         </div>
@@ -31,7 +39,7 @@ export const Tab = defineComponent({
   props:{
     name:{
       type:String,
-    }
+    },
   },
   setup:(props,context) => {
     return ()=> (
