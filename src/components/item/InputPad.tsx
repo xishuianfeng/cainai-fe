@@ -1,3 +1,4 @@
+import { time } from '../../shared/time';
 import { defineComponent } from 'vue';
 import Icon from '../../shared/Icon.vue'
 import s from './InputPad.module.scss'
@@ -22,12 +23,14 @@ export const InputPad = defineComponent({
       {text:'提交',onClick:()=>{}},
     ]
     return ()=> <>
-      <div>
-        <span class={s.notes}>
-          <Icon icon='date'/>
-          <span>2022-01-01</span>
+      <div class={s.dateAndAmount}>
+        <span class={s.date}>
+          <Icon icon='date' class={s.icon}/>
+          <span>
+            2022
+          </span>
         </span>
-        <span class={s.amount}>数字</span>
+        <span class={s.amount}>648</span>
       </div>
       <div class={s.buttons}>
         {buttons.map(button => 

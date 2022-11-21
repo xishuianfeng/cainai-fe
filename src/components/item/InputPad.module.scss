@@ -1,3 +1,27 @@
+.dateAndAmount{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: monospace;
+  padding: 16px;
+  border-top: 1px solid var(--button-border-color);
+  >.date{
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: var(--date-text);
+    .icon> img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  >.amount{
+    font-size: 20px;
+    color:var(--amount-text);
+  }
+}
+
 .buttons{
   display: flex;
   flex-wrap: wrap;
@@ -7,7 +31,7 @@
     border-right: 1px solid var(--button-border-color);
     border-bottom: 1px solid var(--button-border-color);
     width: 25%;
-    height: 48px;
+    height: 64px;
     background: transparent;
     &:nth-child(4n){
       border-right:none;
