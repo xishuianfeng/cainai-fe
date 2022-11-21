@@ -1,8 +1,10 @@
 import { defineComponent, ref } from 'vue';
-import { MainLayout } from '../layout/MainLayout';
+import { MainLayout } from '../../layout/MainLayout';
 import s from './ItemCreate.module.scss'
-import Icon from '../shared/Icon.vue'
-import { Tabs,Tab } from '../shared/Tabs';
+import Icon from '../../shared/Icon.vue'
+import { Tabs,Tab } from '../../shared/Tabs';
+import { InputPad } from './InputPad';
+
 export const ItemCreate = defineComponent({
   setup:(props,context) => {
     const refKind = ref('支出')
@@ -20,6 +22,9 @@ export const ItemCreate = defineComponent({
                 icon 列表2
               </Tab>
             </Tabs>
+            <div class={s.inputPad_wrapper}>
+              <InputPad />
+            </div>
           </>
         }}
       </MainLayout>

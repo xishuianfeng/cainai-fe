@@ -5,8 +5,8 @@ import { Third } from '../components/welcome/Third'
 import { Forth } from '../components/welcome/Forth'
 import { StartPage } from '../views/StartPage'
 import { ItemPage } from '../views/ItemPage'
-import { ItemList } from '../components/ItemList'
-import { ItemCreate } from '../components/ItemCreate'
+import { ItemList } from '../components/item/ItemList'
+import { ItemCreate } from '../components/item/ItemCreate'
 
 export const routes=[
   {path:'/',component:Welcome},
