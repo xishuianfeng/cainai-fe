@@ -9,6 +9,9 @@
   margin-top: 8px;
 }
 .formLabel {
+  .formItem_errorHint{
+    height: 16px;
+  }
 }
 .formItem {
   min-height: var(--input-min-height);
