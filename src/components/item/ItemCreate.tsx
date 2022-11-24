@@ -4,7 +4,6 @@ import s from './ItemCreate.module.scss'
 import Icon from '../../shared/Icon.vue'
 import { Tabs,Tab } from '../../shared/Tabs';
 import { InputPad } from './InputPad';
-import { spawn } from 'child_process';
 
 export const ItemCreate = defineComponent({
   setup:(props,context) => {
@@ -26,10 +25,10 @@ export const ItemCreate = defineComponent({
           icon:<Icon icon='left' class={s.navIcon} />,
           default:()=><>
             <div class={s.wrapper}>
-              <Tabs class={s.tabs} 
+              {/* <Tabs class={s.tabs} 
                   selected={refKind.value} 
-                  onUpdateSelected={(name:string) =>refKind.value = name}>
-              {/* <Tabs v-model:selected={refKind.value} class={s.tabs}> */}
+                  onUpdateSelected={(name:string) =>refKind.value = name}> */}
+              <Tabs v-model:selected={refKind.value} class={s.tabs}>
                 <Tab name="支出" class={s.tags_wrapper}>
                   <div class={s.tag}>
                     <div class={s.sign}>

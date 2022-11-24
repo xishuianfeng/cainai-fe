@@ -1,4 +1,4 @@
-import { time } from '../../shared/time';
+import { Time } from '../../shared/time';
 import { defineComponent, ref } from 'vue';
 import Icon from '../../shared/Icon.vue'
 import s from './InputPad.module.scss'
@@ -57,7 +57,7 @@ export const InputPad = defineComponent({
         <span class={s.date}>
           <Icon icon='date' class={s.icon}/>
           <span>
-            <span onClick={()=>refShowPop.value = true}>{time(refDate.value).format()}</span>
+            <span onClick={()=>refShowPop.value = true}>{new Time(refDate.value).format()}</span>
             <Popup position='bottom' v-model:show = {refShowPop.value}>
               <DatetimePicker value={refDate.value} type="date" title="选择年月日"
                 onConfirm={setDate}
