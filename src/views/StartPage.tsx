@@ -3,7 +3,7 @@ import { Button } from '../shared/Button';
 import { FloatButton } from '../shared/FloatButton';
 import Icon from '../shared/Icon.vue'
 import { Navbar } from '../shared/Navbar';
-import { Ovaerlay } from '../shared/Overlay';
+import { Overlay } from '../shared/Overlay';
 import { RouterLink } from 'vue-router';
 import s from './StartPage.module.scss'
 import { MainLayout } from '../layout/MainLayout';
@@ -33,7 +33,7 @@ export const StartPage = defineComponent({
           <RouterLink to="/items/create">
             <FloatButton iconName='add' class={s.floatbutton}/>
           </RouterLink>
-          {refOverlayVisible.value && <Ovaerlay onClose={()=>refOverlayVisible.value = false}/>}
+          {refOverlayVisible.value && <Overlay onClose={()=>refOverlayVisible.value = false}/>}
         </>
       
         }  
@@ -51,7 +51,7 @@ export const StartPage = defineComponent({
         <RouterLink to="/items/create">
           <FloatButton iconName='add' class={s.floatbutton}/>
         </RouterLink>
-        {refOverlayVisible.value && <Ovaerlay onClose={()=>refOverlayVisible.value = false}/>}
+        {refOverlayVisible.value && <Overlay onClose={()=>refOverlayVisible.value = false}/>}
       </div> */
     )
   }

@@ -3,10 +3,13 @@ import Icon from '../shared/Icon.vue'
 import s from './Overlay.module.scss'
 import { RouterLink } from 'vue-router';
 
-export const Ovaerlay = defineComponent({
+export const Overlay = defineComponent({
   props:{
     onClose: {
       type:Function,
+    },
+    show:{
+      type:Boolean,
     }
   },
   setup:(props,context) => {
