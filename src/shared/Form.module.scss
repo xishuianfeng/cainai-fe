@@ -26,7 +26,13 @@
       border-color: var(--error-color);
     }
   }
-
+  &.validationCodeInput{
+    width: 8em;
+    flex-grow: 0;
+  }
+  &.validationCodeButton{
+    margin-left: 16px;
+  }
   &_name {
   }
   &_value {
