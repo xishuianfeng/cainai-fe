@@ -11,6 +11,7 @@ import { TagCreate } from '../components/tag/TagCreate'
 import { TagEdit } from '../components/tag/TagEdit'
 import { TagPage } from '../views/TagsPage'
 import { SignInPage } from '../views/SignInPage'
+import { StatisticsPage } from '../views/StatisticsPage'
 
 export const routes=[
   {path:'/',redirect:'/welcome/1'},
@@ -40,5 +41,6 @@ export const routes=[
       {path:':id/edit',component:TagEdit}
     ]
   },
-  {path:'/sign_in',component:SignInPage}
+  {path:'/sign_in',component:SignInPage},
+  {path:'/statistics',component:StatisticsPage}
 ]
