@@ -30,6 +30,11 @@
     width: 8em;
     flex-grow: 0;
   }
+  &.select{
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-radius);
+    padding: 0 8px;
+  }
   &.validationCodeButton{
     margin-left: 16px;
   }

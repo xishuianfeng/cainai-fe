@@ -1,3 +1,4 @@
+import { Value } from 'sass';
 import { DatetimePicker, Popup } from 'vant';
 import { computed, defineComponent, PropType, ref, VNode } from 'vue';
 import { Button } from './Button';
@@ -28,12 +29,13 @@ export const FormItem = defineComponent({
       type: [String, Number]
     },
     type: {
-      type: String as PropType<'text' | 'emojiSelect' | 'date' | 'validationCode'>,
+      type: String as PropType<'text' | 'emojiSelect' | 'date' | 'validationCode' | 'select'>,
     },
     error: {
       type: String
     },
-    placeholder:String
+    placeholder:String,
+    options:Array as PropType<Array<{value:string,text:string}>>,
   },
   emits:['update:modelValue'],
   setup: (props, context) => {
@@ -51,6 +53,13 @@ export const FormItem = defineComponent({
             modelValue={props.modelValue?.toString()}
             onUpdateModelValue={(value: any) => context.emit('update:modelValue', value)}
             class={[s.formItem, s.emojiList, s.error]} />
+        case 'select':
+          return <select class={[s.formItem, s.select]} value={props.modelValue}
+              onChange={(e: any) => context.emit('update:modelValue', e.target.value)}>
+            {props.options?.map(option => 
+              <option value={option.value}>{option.text}</option>  
+            )}
+          </select>
         case 'validationCode':
           return <>
             <input class={[s.formItem, s.input, s.validationCodeInput]} 
