@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { defineComponent, reactive } from 'vue';
 import { MainLayout } from '../layout/MainLayout';
 import { Button } from '../shared/Button';
@@ -26,9 +27,9 @@ export const SignInPage = defineComponent({
         { key: 'code', type: 'required', message: '必填' },
       ]))
     }
-    const onClickSendValidationCode =()=>{
-      console.log('111');
-      
+    const onClickSendValidationCode =async ()=>{
+      // const response = await axios.post('/api/v1/validation_codes',{email:formDate.email})
+      // console.log(response);
     }
     return () => (
       <MainLayout>{{
@@ -45,6 +46,7 @@ export const SignInPage = defineComponent({
                 v-model={formDate.email} error={errors.email?.[0]} />
               <FormItem label='验证码' type="validationCode" 
                 placeholder='请输入验证码'
+                countFrom={60}
                 onClick={onClickSendValidationCode}
                 v-model={formDate.code} error={errors.code?.[0]} />
               <FormItem style={{paddingTop:'64px'}}>
