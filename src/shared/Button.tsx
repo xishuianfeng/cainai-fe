@@ -4,7 +4,7 @@ import s from './Button.module.scss'
 export const Button = defineComponent({
   props:{
     onClick:{
-      type:Function
+      type:Function as PropType<(e:MouseEvent)=>void>
     },
     level:{
       type:String,
@@ -16,7 +16,7 @@ export const Button = defineComponent({
   },
   setup:(props,context) => {
     return ()=> (
-      <button type={props.type} class={[s.button,s[props.level]]}>
+      <button type={props.type} class={[s.button,s[props.level]]} onClick={props.onClick}>
         {context.slots.default?.()}
       </button>
     )
