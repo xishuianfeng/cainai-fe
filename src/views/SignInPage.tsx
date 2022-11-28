@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { defineComponent, reactive, ref } from 'vue';
 import { MainLayout } from '../layout/MainLayout';
 import { Button } from '../shared/Button';
@@ -6,6 +6,8 @@ import { Form, FormItem } from '../shared/Form';
 import Icon from '../shared/Icon.vue'
 import { validate } from '../shared/validate';
 import s from './SignInPage.module.scss'
+import { http } from '../shared/Http';
+
 export const SignInPage = defineComponent({
   setup: (props, context) => {
     const formDate = reactive({
@@ -30,9 +32,16 @@ export const SignInPage = defineComponent({
         { key: 'code', type: 'required', message: '必填' },
       ]))
     }
+    const onError = (error: any) => {
+      if (error.response.status === 422) {
+        Object.assign(errors, error.response.data.errors)
+      }
+      throw error
+    }
     const onClickSendValidationCode =async ()=>{
-      // const response = await axios.post('/api/v1/validation_codes',{email:formDate.email})
-      // console.log(response);
+      // const response = await http
+      //   .post('/validation_codes', { email: formData.email })
+      //   .catch(onError)
       refValidationCode.value.startCount()
     }
     return () => (
