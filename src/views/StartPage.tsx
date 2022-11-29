@@ -16,7 +16,7 @@ export const StartPage = defineComponent({
         <MainLayout>{
           {
             title:()=>'彩乃记账',
-          icon:()=> <OverlayIcon/>,
+          icon:()=> <OverlayIcon/>  ,
             default:()=><>
           <div class={s.pig_wrapper}>
             <Icon icon='pig' class={s.pig}/>

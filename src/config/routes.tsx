@@ -18,6 +18,10 @@ export const routes=[
   {
     path:'/welcome',
     component:Welcome,
+    //@ts-ignore
+    beforeEnter:(to,from,next)=>{
+      localStorage.getItem('skipFeatures') === 'yes' ? next('/start') : next()
+    },
     children:[
       { path:'',redirect:'/welcome/1',},
       { path:'1', component:First,},
