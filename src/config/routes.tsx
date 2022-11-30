@@ -12,7 +12,6 @@ import { TagEdit } from '../components/tag/TagEdit'
 import { TagPage } from '../views/TagsPage'
 import { SignInPage } from '../views/SignInPage'
 import { StatisticsPage } from '../views/StatisticsPage'
-import { http } from '../shared/Http'
 
 export const routes = [
   { path: '/', redirect: '/welcome/1' },

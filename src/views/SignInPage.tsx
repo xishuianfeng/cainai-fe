@@ -7,8 +7,9 @@ import { Form, FormItem } from '../shared/Form';
 import Icon from '../shared/Icon.vue'
 import { validate,hasError } from '../shared/validate';
 import s from './SignInPage.module.scss'
+import { history } from '../shared/history';
 import { http } from '../shared/Http';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { refreshMe } from '../shared/me';
 
 export const SignInPage = defineComponent({
@@ -21,10 +22,10 @@ export const SignInPage = defineComponent({
       email: [],
       code: []
     })
-
-    const router = useRouter()
     const refValidationCode = ref<any>()
     const { ref: refDisabled, toggle, on: disabled, off: enable } = useBool(false)
+    const router = useRouter()
+    const route = useRoute()
     const onSubmit = async (e: Event) => {
       e.preventDefault()
       Object.assign(errors, {
@@ -35,30 +36,31 @@ export const SignInPage = defineComponent({
         { key: 'email', type: 'pattern', regex: /.+@.+/, message: '必须是邮箱地址' },
         { key: 'code', type: 'required', message: '必填' },
       ]))
-
-      if(!hasError(errors)){
-        const response = await http.post<{jwt:string}>('/session',formData)
-          .catch(onError)
-        localStorage.setItem('jwt',response.data.jwt)
-        const returnTo = localStorage.getItem('returnTo')
+      if (!hasError(errors)) {
+        const response = await http.post<{ jwt: string }>('/session', formData)
+        localStorage.setItem('jwt', response.data.jwt)
+        // router.push('/sign_in?return_to='+ encodeURIComponent(route.fullPath))
+        const returnTo = route.query.return_to?.toString()
         refreshMe()
         router.push(returnTo || '/')
       }
     }
-    const onError = (error:any)=>{
+    const onError = (error: any) => {
       if (error.response.status === 422) {
         Object.assign(errors, error.response.data.errors)
       }
       throw error
     }
     const onClickSendValidationCode = async () => {
+
       disabled()
       const response = await http
         .post('/validation_codes', { email: formData.email })
         .catch(onError)
         .finally(enable)
-
+      // 成功
       refValidationCode.value.startCount()
+
     }
     return () => (
       <MainLayout>{{
@@ -88,4 +90,14 @@ export const SignInPage = defineComponent({
       }}</MainLayout>
     )
   }
-})
+}) 
+
+
+
+
+
+
+
+
+
+// icon: () => <Icon icon="left" />,
