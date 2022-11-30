@@ -12,39 +12,46 @@ import { TagEdit } from '../components/tag/TagEdit'
 import { TagPage } from '../views/TagsPage'
 import { SignInPage } from '../views/SignInPage'
 import { StatisticsPage } from '../views/StatisticsPage'
+import { http } from '../shared/Http'
 
-export const routes=[
-  {path:'/',redirect:'/welcome/1'},
+export const routes = [
+  { path: '/', redirect: '/welcome/1' },
   {
-    path:'/welcome',
-    component:Welcome,
+    path: '/welcome',
+    component: Welcome,
     //@ts-ignore
-    beforeEnter:(to,from,next)=>{
+    beforeEnter: (to, from, next) => {
       localStorage.getItem('skipFeatures') === 'yes' ? next('/start') : next()
     },
-    children:[
-      { path:'',redirect:'/welcome/1',},
-      { path:'1', component:First,},
-      { path:'2', component:Second,},
-      { path:'3', component:Third,},
-      { path:'4', component:Forth,},
+    children: [
+      { path: '', redirect: '/welcome/1', },
+      { path: '1', component: First, },
+      { path: '2', component: Second, },
+      { path: '3', component: Third, },
+      { path: '4', component: Forth, },
     ]
   },
-  {path:'/start',component:StartPage},
+  { path: '/start', component: StartPage },
   {
-    path:'/items', component:ItemPage,
-    children:[
-      {path:'',component:ItemList},
-      {path:'create',component:ItemCreate},
+    path: '/items', component: ItemPage,
+    //@ts-ignore
+    beforeEnter: async (to, from, next) => {
+      await http.get('/me').catch(()=>{
+        next('/sign_in?return_to=' + to.path)
+      })  
+    },
+    children: [
+      { path: '', component: ItemList },
+      { path: 'create', component: ItemCreate },
     ]
   },
   {
-    path:'/tags',component:TagPage,
-    children:[
-      {path:'create',component:TagCreate},
-      {path:':id/edit',component:TagEdit}
+    path: '/tags', component: TagPage,
+    children: [
+      { path: 'create', component: TagCreate },
+      { path: ':id/edit', component: TagEdit }
     ]
   },
-  {path:'/sign_in',component:SignInPage},
-  {path:'/statistics',component:StatisticsPage}
+  { path: '/sign_in', component: SignInPage },
+  { path: '/statistics', component: StatisticsPage }
 ]
