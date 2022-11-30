@@ -34,12 +34,6 @@ export const routes = [
   { path: '/start', component: StartPage },
   {
     path: '/items', component: ItemPage,
-    //@ts-ignore
-    beforeEnter: async (to, from, next) => {
-      await http.get('/me').catch(()=>{
-        next('/sign_in?return_to=' + to.path)
-      })  
-    },
     children: [
       { path: '', component: ItemList },
       { path: 'create', component: ItemCreate },
@@ -53,5 +47,7 @@ export const routes = [
     ]
   },
   { path: '/sign_in', component: SignInPage },
-  { path: '/statistics', component: StatisticsPage }
+  { 
+    path: '/statistics', component: StatisticsPage,
+  },
 ]

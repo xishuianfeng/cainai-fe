@@ -9,6 +9,7 @@ import { validate,hasError } from '../shared/validate';
 import s from './SignInPage.module.scss'
 import { http } from '../shared/Http';
 import { useRouter } from 'vue-router';
+import { refreshMe } from '../shared/me';
 
 export const SignInPage = defineComponent({
   setup: (props, context) => {
@@ -40,6 +41,7 @@ export const SignInPage = defineComponent({
           .catch(onError)
         localStorage.setItem('jwt',response.data.jwt)
         const returnTo = localStorage.getItem('returnTo')
+        refreshMe()
         router.push(returnTo || '/')
       }
     }
